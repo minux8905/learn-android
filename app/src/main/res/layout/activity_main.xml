@@ -3,44 +3,54 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+        <import type="com.example.learnandroid.mvvm.ui.MainViewModel"/>
+
+        <variable
+            name="viewModel"
+            type="MainViewModel" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".mvvm.MainActivity">
+        tools:context=".mvvm.ui.MainActivity">
 
-        <TextView
-            android:id="@+id/tv_counter"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="t"
-            android:textSize="18sp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="@{viewModel.id}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fab_add"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/pw"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="10dp"
-            android:layout_marginBottom="10dp"
-            android:clickable="true"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:ems="10"
+            android:text="@{viewModel.pw}"
+            android:inputType="textPassword"
+            android:layout_marginTop="15dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:srcCompat="@drawable/ic_baseline_add_24" />
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fab_remove"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginBottom="10dp"
-            android:clickable="true"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:srcCompat="@drawable/ic_baseline_minus_24" />
+            app:layout_constraintTop_toBottomOf="@+id/id" />
+
+        <Button
+            android:id="@+id/registrationButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="로그인"
+            android:onClick="@{() -> viewModel.login()}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/pw"
+            android:layout_marginHorizontal="15dp"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
 
